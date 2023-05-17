@@ -18,7 +18,7 @@ function ListArticles (props) {
                 justifyContent="space-around"
                 alignItems="center"
                 spacing={2}
-                sx={{background: 'grey', color: 'white', height: '100%'}}
+                sx={{background: 'black', color: 'white', height: '100%'}}
             >
                 <Grid item xs={12} md={12}>
                     <h1>Les pizzas di Mario</h1>

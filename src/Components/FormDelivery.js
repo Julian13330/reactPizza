@@ -37,8 +37,8 @@ const FormDelivery = (props) => {
     // Update : setCity
     // Verifier useEffect Type zipCode bug **** VOIR ****
     const handleZipChange = (e)=> {
-        if (!isNaN(e.target.value)){
-            if (e.target.value.length === 5){
+        if (!isNaN(e.target.value)){ // Si la valeur n'est pas un nombre
+            if (e.target.value.length === 5){ // si notre valeur est égal à 5
                 const url = `https://apicarto.ign.fr/api/codes-postaux/communes/${e.target.value}`
                 fetch(url)
                 .then(response=> {
@@ -46,10 +46,10 @@ const FormDelivery = (props) => {
                         response.json()
                         .then(res => {
                             if(res.length > 0){
-                                setCityList(res)
+                                setCityList(res) // affiche la commune
                             }
                             else {
-                                setCityList(false)
+                                setCityList(false) // notre erreur
                             }
                         })
                     }
@@ -79,14 +79,14 @@ const FormDelivery = (props) => {
 
     return (
         <div>
-            <h1>Quel est votre adresse ? s'il vous plait</h1>
+            <h1>Quelle est votre commune ? s'il vous plait</h1>
             {error && <p>{error}</p>}
             <label for='zipcode'>Code Postal : </label>
             <input
                 type='number'
                 name='zipcode'
                 value={zipCode}
-                onChange={handleZipChange}
+                onChange={handleZipChange} // onChange détecte quand la valeur change dans l'input
             />
             {cityList
                 ? <CitySelector data={cityList} />
